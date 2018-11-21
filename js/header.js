@@ -5,7 +5,7 @@ customElements.define('x-header', class extends LitElement {
     return html`
       <style>
         .header {
-          background: #567;
+          background: #234;
           height: 60px;
           line-height: 60px;
           overflow: hidden;

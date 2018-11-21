@@ -6,7 +6,6 @@ customElements.define('x-paper', class extends LitElement {
     <style>
       .paper {
         margin: 25px;
-        padding: 10px;
         background: #fff;
         box-shadow: 5px 5px 5px #00000011;
         font-family: sans-serif;

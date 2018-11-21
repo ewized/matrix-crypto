@@ -4,9 +4,23 @@ import './paper.js';
 customElements.define('x-pane', class extends LitElement {
   render() {
     return html`
+    <style>
+      .title {
+        background: #567;
+        margin: 0;
+        padding: 1px 18px;
+        color: #fff;
+        border: 1px solid #bbb;
+      }
+      .content {
+        padding: 10px;
+      }
+    </style>
     <x-paper>
-      <slot name="title"></slot>
-      <p>
+      <div class="title">
+        <slot name="title"></slot>
+      </div>
+      <p class="content">
         <slot></slot>
       </p>
     </x-paper>
