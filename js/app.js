@@ -8,7 +8,7 @@ import './footer.js'
 customElements.define('x-app', class extends LitElement {
   render() {
     return html`
-      <x-header>Crypto Matrix</x-header>
+      <x-header>Matrix Crypto</x-header>
       <x-page width="1280px">
         <x-pane>
           <h3 slot="title">Encrypt Text</h3>
