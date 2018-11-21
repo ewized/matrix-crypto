@@ -1,0 +1,21 @@
+{
+  "name": "Matrix Crypto Math Project",
+  "short_name": "Matrix Crypto",
+  "description": "Site for the matrix crypto math project.",
+  "background_color": "#234",
+  "theme_color": "#567",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://api.adorable.io/avatars/256/matrix-crypto.png",
+      "sizes": "72x72 96x96 128x128 256x256"
+    }
+  ],
+  "serviceworker": {
+    "src": "sw.js",
+    "scope": "/",
+    "use_cache": false
+  }
+}
