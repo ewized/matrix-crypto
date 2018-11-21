@@ -1,7 +1,7 @@
 import { LitElement, html } from 'https://unpkg.com/@polymer/lit-element@0.6.3/lit-element.js?module';
 import './paper.js';
 
-export class Pane extends LitElement {
+customElements.define('x-pane', class extends LitElement {
   render() {
     return html`
     <x-paper>
@@ -12,5 +12,4 @@ export class Pane extends LitElement {
     </x-paper>
     `
   }
-}
-customElements.define('x-pane', Pane)
+})

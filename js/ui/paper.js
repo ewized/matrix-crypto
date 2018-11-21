@@ -1,11 +1,11 @@
 import { LitElement, html } from 'https://unpkg.com/@polymer/lit-element@0.6.3/lit-element.js?module';
 
-export class Paper extends LitElement {
+customElements.define('x-paper', class extends LitElement {
   render() {
     return html`
     <style>
       .paper {
-        margin: 10px;
+        margin: 25px;
         padding: 10px;
         background: #fff;
         box-shadow: 5px 5px 5px #00000011;
@@ -18,5 +18,4 @@ export class Paper extends LitElement {
     </div>
     `
   }
-}
-customElements.define('x-paper', Paper)
+})
