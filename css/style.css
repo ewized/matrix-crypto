@@ -1,0 +1,41 @@
+@import "https://fonts.googleapis.com/css?family=Ubuntu:700,400";
+@import "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+
+body {
+  font-family: Ubuntu;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  background: #ededed;
+}
+
+a, a:visited {
+  color: #f1f2ff;
+}
+
+a:hover {
+  color: #d2d3db;
+  text-decoration: none;
+}
+
+a:focus, a:active {
+  color: #f1f2ff;
+  text-decoration:none;
+  border-bottom:1px dotted #111;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.overflow {
+  white-space: nowrap;
+  word-wrap: normal;
+  overflow: auto;
+}
