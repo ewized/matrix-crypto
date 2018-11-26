@@ -5,7 +5,7 @@ customElements.define('x-page', class extends LitElement {
     return html`
       <style>
         .page {
-          max-width: 1280px;
+          max-width: ${this.attributes.width.value};
           margin: 0 auto;
         }
       </style>

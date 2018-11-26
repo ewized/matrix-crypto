@@ -1,4 +1,5 @@
 import { LitElement, html } from 'https://unpkg.com/@polymer/lit-element@0.6.3/lit-element.js?module'
+import './page.js'
 
 customElements.define('x-header', class extends LitElement {
   render() {
@@ -12,10 +13,6 @@ customElements.define('x-header', class extends LitElement {
           border-bottom: 1px solid #456;
           box-shadow: 0 5px 5px #00000022;
         }
-        .inner-header {
-          max-width: 1280px;
-          margin: 0 auto;
-        }
         .title {
           margin: 0;
           padding: 0 0 0 25px;
@@ -23,11 +20,11 @@ customElements.define('x-header', class extends LitElement {
         }
       </style>
       <header class="header">
-        <div class="inner-header">
+        <x-page width="${this.attributes.width.value}">
           <h1 class="title">
             <slot></slot>
           </h1>
-        </div>
+        </x-page>
       </header>
     `
   }
