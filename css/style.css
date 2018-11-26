@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.5;
-  background: #ededed;
+  background:  #ededed;
 }
 
 a, a:visited {
@@ -43,4 +43,15 @@ a:focus, a:active {
 h1, h2, h3, h4, h5, h6 {
   margin: 5px 0;
   padding: 0;
+}
+
+svg.loading-spinner {
+  display: block;
+  padding-top: 10%;
+  margin: 0 auto;
+}
+
+h1.loading-spinner {
+  text-align: center;
+  color: #333;
 }
