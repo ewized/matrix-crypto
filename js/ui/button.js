@@ -1,6 +1,7 @@
 import { LitElement, html } from 'https://unpkg.com/@polymer/lit-element@0.6.3/lit-element.js?module';
 
 customElements.define('x-button', class extends LitElement {
+
   render() {
     return html`
       <style>

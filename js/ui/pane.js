@@ -2,6 +2,7 @@ import { LitElement, html } from 'https://unpkg.com/@polymer/lit-element@0.6.3/l
 import './paper.js';
 
 customElements.define('x-pane', class extends LitElement {
+
   render() {
     return html`
     <style>

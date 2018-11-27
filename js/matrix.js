@@ -1,8 +1,45 @@
 import { LitElement, html } from 'https://unpkg.com/@polymer/lit-element@0.6.3/lit-element.js?module'
+import { decodeChar, JsonType } from './utils.js'
 
 customElements.define('x-matrix', class extends LitElement {
+
+  static get properties() {
+    return {
+      matrix: { type: JsonType, attribute: 'matrix', reflect: true },
+      bgMatrix: { type: JsonType, attribute: 'bg-matrix', reflect: true },
+    }
+  }
+
+  /** Get the background color at i, j of the matrix */
+  bg(i, j) {
+    return this.bgMatrix || this.bgEqualsMatrix ? math.subset(this.bgEqualsMatrix ? this.matrix : this.bgMatrix, math.index(i, j)) : false
+  }
+
+  /** Get the value at i, j of the matrix */
+  valueAt(i, j) {
+    return math.subset(this.matrix, math.index(i, j))
+  }
+
+  /** Get the size of the matrix */
+  size() {
+    return this.matrix ? math.size(this.matrix) : [0, 0]
+  }
+
+  toggleValueAt(i, j) {
+    if (!this.canToggle) {
+      return;
+    }
+    let orgValue = this.valueAt(i, j)
+    this.matrix[i][j] = orgValue > 0 ? 0 : 1
+    if (math.det(this.matrix) == 0) {
+      alert('This will create a non invertable matrix...')
+      this.matrix[i][j] = orgValue;
+    }
+    this.requestUpdate()
+  }
+
   render() {
-    let [ m, n ] = math.size(this.matrix.toArray())
+    let [ m, n ] = this.size()
     return html`
       <style>
         * {
@@ -10,9 +47,13 @@ customElements.define('x-matrix', class extends LitElement {
         }
         .matrix-wrapper {
           overflow: hidden;
+          width: calc(var(--size) * ${m});
+          border: 1px solid #333;
         }
         .m {
-          height: calc(var(--size) + 2px);
+          height: var(--size);
+          color: #000;
+          background: #fff;
         }
         .m > .n {
           float: left;
@@ -21,13 +62,14 @@ customElements.define('x-matrix', class extends LitElement {
           line-height: var(--size);
           text-align: center;
         }
+        .invert {
+          color: #fff;
+          background: #000;
+        }
       </style>
-      <div>
-      Det: ${math.det(this.matrix)}
-      </div>
       <div class="matrix-wrapper">
-        <!-- This is the mxn matrix -->
-        ${[ ...Array(m).keys() ].map(m => html`<div class="m m-${m}">${[ ...Array(n).keys() ].map(n => html`<div class="n n-${n}">${math.subset(this.matrix, math.index(m, n))}</div>`)}</div>`)}
+          <!-- This is the mxn matrix -->
+          ${[ ...Array(m).keys() ].map(i => html`<div class="m m-${i}">${[ ...Array(n).keys() ].map(j => html`<div class="n n-${j} ${this.bg(i, j) > 0 ? "invert" : "normal"}" @click=${event => this.toggleValueAt(i, j)}>${this.hideText ? '' : this.valueAt(i, j)}</div>`)}</div>`)}
       </div>
     `
   }

@@ -1,11 +1,13 @@
 import { LitElement, html } from 'https://unpkg.com/@polymer/lit-element@0.6.3/lit-element.js?module'
 
 customElements.define('x-footer', class extends LitElement {
+
   render() {
     return html`
       <style>
         .footer {
           text-align: center;
+          padding-bottom: 25px;
         }
         .copy, a, a:visited {
           color: #00000066;

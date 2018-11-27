@@ -2,6 +2,7 @@ import { LitElement, html } from 'https://unpkg.com/@polymer/lit-element@0.6.3/l
 import './page.js'
 
 customElements.define('x-header', class extends LitElement {
+
   render() {
     return html`
       <style>
