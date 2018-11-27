@@ -1,16 +1,8 @@
 import { LitElement, html } from 'https://unpkg.com/@polymer/lit-element@0.6.3/lit-element.js?module'
 
 customElements.define('x-matrix', class extends LitElement {
-  static get properties() {
-    return {
-      m: { type: Number },
-      n: { type: Number }
-    }
-  }
-
   render() {
-    // basicly generate a random matrix filled with values
-    this.matrix = math.matrix([ ...Array(this.m) ].map(x => [ ...Array(this.n) ].map(_ => Math.floor(Math.random() * 27))))
+    let [ m, n ] = math.size(this.matrix.toArray())
     return html`
       <style>
         * {
@@ -35,7 +27,7 @@ customElements.define('x-matrix', class extends LitElement {
       </div>
       <div class="matrix-wrapper">
         <!-- This is the mxn matrix -->
-        ${[ ...Array(this.m).keys() ].map(m => html`<div class="m m-${m}">${[ ...Array(this.m).keys() ].map(n => html`<div class="n n-${n}">${math.subset(this.matrix, math.index(m, n))}</div>`)}</div>`)}
+        ${[ ...Array(m).keys() ].map(m => html`<div class="m m-${m}">${[ ...Array(n).keys() ].map(n => html`<div class="n n-${n}">${math.subset(this.matrix, math.index(m, n))}</div>`)}</div>`)}
       </div>
     `
   }

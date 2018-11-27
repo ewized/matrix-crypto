@@ -31,7 +31,7 @@ customElements.define('x-app', class extends LitElement {
         </x-pane>
         <x-paper>
           <center>
-            <x-matrix m="5" n="5"></x-matrix>
+            <x-matrix .matrix=${math.matrix([ ...Array(5) ].map(x => [ ...Array(5) ].map(_ => Math.floor(Math.random() * 27))))}></x-matrix>
           </center>
         </x-paper>
         <x-footer></x-footer>
