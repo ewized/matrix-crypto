@@ -13,18 +13,17 @@ customElements.define('x-encrypt-matrix', class extends LitElement {
     this.matrix = math.zeros(5, 5).toArray()
   }
 
-  updateMatrix(value) {
-    let values = encodeChar(value)
+  updateMatrix(value, textField) {
+    let values = encodeChar(value.padEnd(25, ' '))
     let i = 0;
     for (let j = 0 ; j < values.length ; j++) {
-      if (j % 6 == 5) {
+      //console.log(i, j % 5)
+      this.matrix[i][j % 5] = values[j]
+      if (j % 5 == 4) {
         i++;
       }
-      this.matrix[i][j] = values[j]
     }
-    let e = this.querySelector("x-matrix")
-    console.log(this.matrix, e)
-    //this.requestUpdate()
+    textField.parentNode.children[1].requestUpdate()
   }
 
   render() {
@@ -38,8 +37,8 @@ customElements.define('x-encrypt-matrix', class extends LitElement {
       <x-pane>
         <h3 slot="title">Encrypt Text</h3>
         <x-center>
-          <x-text-field .onChange=${value => this.updateMatrix(value)} .placeholder=${'Encrypt message'} .maxlength=${25}></x-text-field>
-          <x-matrix id="matrix" .bgMatrix=${this.bgMatrix} .matrix=${this.matrix}></x-matrix>
+          <x-text-field .onChange=${(value, textField) => this.updateMatrix(value, textField)} .placeholder=${'Encrypt message'} .maxlength=${25}></x-text-field>
+          <x-matrix .bgMatrix=${this.bgMatrix} .matrix=${this.matrix}></x-matrix>
         </x-center>
       </x-pane>
     `

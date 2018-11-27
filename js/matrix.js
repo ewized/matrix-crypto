@@ -3,13 +3,6 @@ import { decodeChar, JsonType } from './utils.js'
 
 customElements.define('x-matrix', class extends LitElement {
 
-  static get properties() {
-    return {
-      matrix: { type: JsonType, attribute: 'matrix', reflect: true },
-      bgMatrix: { type: JsonType, attribute: 'bg-matrix', reflect: true },
-    }
-  }
-
   /** Get the background color at i, j of the matrix */
   bg(i, j) {
     return this.bgMatrix || this.bgEqualsMatrix ? math.subset(this.bgEqualsMatrix ? this.matrix : this.bgMatrix, math.index(i, j)) : false
