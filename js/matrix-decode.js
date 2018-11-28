@@ -116,7 +116,7 @@ customElements.define('x-matrix-decode', class extends LitElement {
         <!-- This is the mxn matrix -->
         ${[ ...Array(m).keys() ].map(i => html`<div class="m m-${i}">
           ${[ ...Array(n).keys() ].map(j => html`<div class="n n-${j}" @click=${event => this.toggleValueAt(i, j)}>
-            <input @change=${event => this.inputValidation(event, i, j)} ?disabled=${!this.lockBg} class="values ${this.bg(i, j) > 0 ? "invert" : "normal"}" type="number" value="0" min="0">
+            <input onclick="this.select()" @change=${event => this.inputValidation(event, i, j)} ?disabled=${!this.lockBg} class="values ${this.bg(i, j) > 0 ? "invert" : "normal"}" type="number" value="0" min="0">
           </div>`)}
         </div>`)}
       </div>
