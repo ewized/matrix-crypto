@@ -14,16 +14,22 @@ customElements.define('x-encrypt-matrix', class extends LitElement {
   }
 
   updateMatrix(value, textField) {
+    let tmp = math.zeros(5, 5).toArray()
     let values = encodeChar(value.padEnd(25, ' '))
     let i = 0;
     for (let j = 0 ; j < values.length ; j++) {
       //console.log(i, j % 5)
-      this.matrix[i][j % 5] = values[j]
+      tmp[i][j % 5] = values[j]
       if (j % 5 == 4) {
         i++;
       }
     }
-    this.matrix = math.multiply(this.matrix, this.bgMatrix)
+    let encryptedMatrix = math.multiply(tmp, this.bgMatrix)
+    for (let i = 0 ; i < 5 ; i++) {
+      for (let j = 0 ; j < 5 ; j++) {
+        this.matrix[i][j] = encryptedMatrix[i][j]
+      }
+    }
     textField.parentNode.children[1].requestUpdate()
   }
 
