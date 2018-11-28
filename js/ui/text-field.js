@@ -24,7 +24,7 @@ customElements.define('x-text-field', class extends LitElement {
           height: 55px;
       }
     </style>
-    <input onclick="this.select()" @keyup=${event => this.onChange(event.path[0].value, this)} @change=${event => this.onChange(event.path[0].value, this)} class="text-field" type="text" placeholder=${this.attributes.placeholder && this.attributes.placeholder.value} ?disabled=${this.disabled} maxlength=${this.attributes.maxlength && this.attributes.maxlength.value}>
+    <input onclick="this.select()" @keyup=${event => this.onChange(event.target.value, this)} @change=${event => this.onChange(event.target.value, this)} class="text-field" type="text" placeholder=${_.get(this, 'attributes.placeholder.value')} ?disabled=${this.disabled} maxlength=${_.get(this, 'attributes.maxlength.value')}>
     `
   }
 })

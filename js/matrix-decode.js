@@ -35,9 +35,9 @@ customElements.define('x-matrix-decode', class extends LitElement {
   }
 
   inputValidation(event, i, j) {
-    let value = Number(event.path[0].value)
-    if (!(value >= 0)) {
-      value = event.path[0].value = 0
+    let value = Number(event.target.value)
+    if (event.target.value == '' || value < 0) {
+      value = event.target.value = 0
     }
     this.matrix[i][j] = value
     this.changeHandler()
