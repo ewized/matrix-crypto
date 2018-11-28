@@ -1,5 +1,5 @@
 import { LitElement, html } from 'https://unpkg.com/@polymer/lit-element@0.6.3/lit-element.js?module'
-import { decodeChar, MATRIX_SIZE } from './utils.js'
+import { decodeChar, MATRIX_SIZE, LOCK, UNLOCK } from './utils.js'
 
 customElements.define('x-matrix-decode', class extends LitElement {
 
@@ -90,15 +90,16 @@ customElements.define('x-matrix-decode', class extends LitElement {
           position: absolute;
           margin: -1px 0 0 calc(var(--size) * ${m});
           display: block;
-          background: #999;
+          background: #666;
           border: 1px solid #333;
-          height: calc(var(--size) - 1px);
-          width: calc(var(--size) - 1px);
+          height: calc(var(--size) - 21px);
+          width: calc(var(--size) - 21px);
           line-height: var(--size);
           text-align: center;
           color: #fff;
           font-weight: bold;
           border-radius: 0 5px 5px 0;
+          padding: 10px
         }
         input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
           -webkit-appearance: none;
@@ -110,7 +111,7 @@ customElements.define('x-matrix-decode', class extends LitElement {
           this.lockBg = !this.lockBg
           this.requestUpdate()
         }}>
-          ${this.lockBg ? html`?` : html`!`}
+          ${this.lockBg ? LOCK : UNLOCK}
         </div>
         <!-- This is the mxn matrix -->
         ${[ ...Array(m).keys() ].map(i => html`<div class="m m-${i}">
