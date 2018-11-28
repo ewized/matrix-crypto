@@ -54,7 +54,4 @@ export function generateMatrix(m, n, range=26) {
   return matrix;
 }
 
-export const JsonType = {
-  fromAttribute: (attr) => { return JSON.parse(attr) },
-  toAttribute:   (prop) => { return JSON.stringify(prop) }
-}
+export const MATRIX_SIZE = 5

@@ -1,5 +1,5 @@
 import { LitElement, html } from 'https://unpkg.com/@polymer/lit-element@0.6.3/lit-element.js?module'
-import { decodeChar, JsonType } from './utils.js'
+import { decodeChar, MATRIX_SIZE } from './utils.js'
 
 customElements.define('x-matrix', class extends LitElement {
 

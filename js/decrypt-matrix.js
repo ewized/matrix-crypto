@@ -4,11 +4,11 @@ import './ui/center.js'
 import './ui/pane.js'
 import './ui/text-field.js'
 import './matrix.js'
+import './matrix-decode.js'
 
 customElements.define('x-decrypt-matrix', class extends LitElement {
 
   liveEdit(matrix, key, element) {
-    console.log('liveEdit')
     let decodedText = ''
     if (math.det(key) == 0) {
       decodedText = 'bad key (det == 0)'
@@ -20,7 +20,6 @@ customElements.define('x-decrypt-matrix', class extends LitElement {
         }
       }
     }
-    console.log(decodedText, typeof(decodedText))
     element.parentNode.children[1].shadowRoot.children[1].value = decodedText
   }
 
@@ -28,7 +27,7 @@ customElements.define('x-decrypt-matrix', class extends LitElement {
     return html`
       <style>
         x-text-field {
-          padding: 16px 0;
+          padding-top: 16px;
           display: block;
         }
       </style>
@@ -36,7 +35,7 @@ customElements.define('x-decrypt-matrix', class extends LitElement {
         <h3 slot="title">Decrypt Text</h3>
         <x-center>
           <x-matrix-decode .onChange=${(matrix, key, element) => this.liveEdit(matrix, key, element)}></x-matrix-decode>
-          <x-text-field .disabled=${true}></x-text-field>
+          <x-text-field .disabled=${true} .placeholder=${'Decrypted message'}></x-text-field>
         </x-center>
       </x-pane>
     `

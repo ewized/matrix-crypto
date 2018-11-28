@@ -1,13 +1,13 @@
 import { LitElement, html } from 'https://unpkg.com/@polymer/lit-element@0.6.3/lit-element.js?module'
-import { decodeChar, JsonType } from './utils.js'
+import { decodeChar, MATRIX_SIZE } from './utils.js'
 
 customElements.define('x-matrix-decode', class extends LitElement {
 
   constructor() {
     super()
     this.lockBg = false
-    this.bgMatrix = math.zeros(5, 5).toArray()
-    this.matrix = math.zeros(5, 5).toArray()
+    this.bgMatrix = math.zeros(MATRIX_SIZE, MATRIX_SIZE).toArray()
+    this.matrix = math.zeros(MATRIX_SIZE, MATRIX_SIZE).toArray()
   }
 
   /** Get the background color at i, j of the matrix */

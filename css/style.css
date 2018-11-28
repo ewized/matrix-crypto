@@ -4,6 +4,7 @@ body {
   padding: 0;
   line-height: 1.5;
   background:  #ededed;
+  min-width: 455px;
 }
 
 svg.loading-spinner {

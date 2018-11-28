@@ -14,7 +14,7 @@ customElements.define('x-pane', class extends LitElement {
         border: 1px solid #bbb;
       }
       .content {
-        padding: 10px;
+        padding: 25px 75px;
       }
     </style>
     <x-paper>

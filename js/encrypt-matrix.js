@@ -1,5 +1,5 @@
 import { LitElement, html } from 'https://unpkg.com/@polymer/lit-element@0.6.3/lit-element.js?module'
-import { encodeChar, generateMatrix } from './utils.js'
+import { encodeChar, generateMatrix, MATRIX_SIZE } from './utils.js'
 import './ui/center.js'
 import './ui/pane.js'
 import './ui/text-field.js'
@@ -9,24 +9,24 @@ customElements.define('x-encrypt-matrix', class extends LitElement {
 
   constructor() {
     super();
-    this.bgMatrix = generateMatrix(5, 5, 2)
-    this.matrix = math.zeros(5, 5).toArray()
+    this.bgMatrix = generateMatrix(MATRIX_SIZE, MATRIX_SIZE, 2)
+    this.matrix = math.zeros(MATRIX_SIZE, MATRIX_SIZE).toArray()
   }
 
   updateMatrix(value, textField) {
-    let tmp = math.zeros(5, 5).toArray()
-    let values = encodeChar(value.padEnd(25, ' '))
+    let tmp = math.zeros(MATRIX_SIZE, MATRIX_SIZE).toArray()
+    let values = encodeChar(value.padEnd(MATRIX_SIZE ** 2, ' '))
     let i = 0;
     for (let j = 0 ; j < values.length ; j++) {
       //console.log(i, j % 5)
-      tmp[i][j % 5] = values[j]
-      if (j % 5 == 4) {
+      tmp[i][j % MATRIX_SIZE] = values[j]
+      if (j % MATRIX_SIZE == MATRIX_SIZE - 1) {
         i++;
       }
     }
     let encryptedMatrix = math.multiply(tmp, this.bgMatrix)
-    for (let i = 0 ; i < 5 ; i++) {
-      for (let j = 0 ; j < 5 ; j++) {
+    for (let i = 0 ; i < MATRIX_SIZE ; i++) {
+      for (let j = 0 ; j < MATRIX_SIZE ; j++) {
         this.matrix[i][j] = encryptedMatrix[i][j]
       }
     }
@@ -37,7 +37,7 @@ customElements.define('x-encrypt-matrix', class extends LitElement {
     return html`
       <style>
         x-text-field {
-          padding: 16px 0;
+          padding-bottom: 16px;
           display: block;
         }
       </style>
