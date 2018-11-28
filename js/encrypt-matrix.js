@@ -23,6 +23,7 @@ customElements.define('x-encrypt-matrix', class extends LitElement {
         i++;
       }
     }
+    this.matrix = math.multiply(this.matrix, this.bgMatrix)
     textField.parentNode.children[1].requestUpdate()
   }
 

@@ -47,6 +47,7 @@ customElements.define('x-matrix', class extends LitElement {
           height: var(--size);
           color: #000;
           background: #fff;
+          font-size: 14px;
         }
         .m > .n {
           float: left;
@@ -61,8 +62,12 @@ customElements.define('x-matrix', class extends LitElement {
         }
       </style>
       <div class="matrix-wrapper">
-          <!-- This is the mxn matrix -->
-          ${[ ...Array(m).keys() ].map(i => html`<div class="m m-${i}">${[ ...Array(n).keys() ].map(j => html`<div class="n n-${j} ${this.bg(i, j) > 0 ? "invert" : "normal"}" @click=${event => this.toggleValueAt(i, j)}>${this.hideText ? '' : this.valueAt(i, j)}</div>`)}</div>`)}
+        <!-- This is the mxn matrix -->
+        ${[ ...Array(m).keys() ].map(i => html`<div class="m m-${i}">
+          ${[ ...Array(n).keys() ].map(j => html`<div class="n n-${j} ${this.bg(i, j) > 0 ? "invert" : "normal"}" @click=${event => this.toggleValueAt(i, j)}>
+            ${this.hideText ? '' : this.valueAt(i, j)}
+          </div>`)}
+        </div>`)}
       </div>
     `
   }

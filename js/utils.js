@@ -42,7 +42,7 @@ export function decodeChar(x) {
   if (x.length > 0) {
     return [ ...x ].map(c => NUMBER_MAP[c.toLowerCase()])
   }
-  return NUMBER_MAP[x]
+  return NUMBER_MAP[x] || ''
 }
 
 
