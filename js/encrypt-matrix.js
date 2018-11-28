@@ -44,7 +44,7 @@ customElements.define('x-encrypt-matrix', class extends LitElement {
       <x-pane>
         <h3 slot="title">Encrypt Text</h3>
         <x-center>
-          <x-text-field .onChange=${(value, textField) => this.updateMatrix(value, textField)} .placeholder=${'Encrypt message'} .maxlength=${25}></x-text-field>
+          <x-text-field .onChange=${(value, textField) => this.updateMatrix(value, textField)} placeholder="Encrypt message" maxlength="25"></x-text-field>
           <x-matrix .bgMatrix=${this.bgMatrix} .matrix=${this.matrix}></x-matrix>
         </x-center>
       </x-pane>

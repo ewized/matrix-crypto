@@ -1,12 +1,10 @@
 import { LitElement, html } from 'https://unpkg.com/@polymer/lit-element@0.6.3/lit-element.js?module'
-import { generateMatrix } from './utils.js'
+import { generateMatrix, PAGE_WIDTH } from './utils.js'
 import './page.js'
 import './header.js'
 import './footer.js'
 import './encrypt-matrix.js'
 import './decrypt-matrix.js'
-
-const PAGE_WIDTH = '1280px'
 
 customElements.define('x-app', class extends LitElement {
 

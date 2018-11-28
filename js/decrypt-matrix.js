@@ -35,7 +35,7 @@ customElements.define('x-decrypt-matrix', class extends LitElement {
         <h3 slot="title">Decrypt Text</h3>
         <x-center>
           <x-matrix-decode .onChange=${(matrix, key, element) => this.liveEdit(matrix, key, element)}></x-matrix-decode>
-          <x-text-field .disabled=${true} .placeholder=${'Decrypted message'}></x-text-field>
+          <x-text-field .disabled=${true} placeholder="Decrypted message"></x-text-field>
         </x-center>
       </x-pane>
     `
