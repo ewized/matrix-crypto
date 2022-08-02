@@ -25,7 +25,7 @@ customElements.define('x-footer', class extends LitElement {
       </style>
       <footer class="footer">
         <small class="copy">
-          <a href="https://www.ewized.com/" target="_blank">Joshua Rodriguez</a> & Peter Knight &bull; Copyright &copy ${new Date().getFullYear()}.
+          Copyright &copy ${new Date().getFullYear()}.
         </small>
       </footer>
     `
